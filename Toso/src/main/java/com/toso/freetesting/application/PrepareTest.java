@@ -1,10 +1,14 @@
 package com.toso.freetesting.application;
+import org.springframework.stereotype.Service;
+
 import com.toso.freetesting.domain.*;
+import com.toso.freetesting.service.IPrepareTest;
 import com.toso.freetesting.technology.TestRepository;
 import com.toso.freetesting.technology.XMLParser;
+@Service
+public class PrepareTest implements IPrepareTest {
 
-public class PrepareTest {
-
+	@Override	
 	public Test prepare (String testName){
 		XMLParser xml=new XMLParser();
 		Test test1 = new Test();
@@ -14,5 +18,4 @@ public class PrepareTest {
 		test1=repository.find("SOA");
 		return test1;
 	}
-	
 }

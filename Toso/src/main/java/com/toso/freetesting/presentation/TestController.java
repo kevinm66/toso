@@ -1,5 +1,8 @@
 package com.toso.freetesting.presentation;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,9 +11,11 @@ import com.toso.freetesting.application.PrepareTest;
 import com.toso.freetesting.domain.QuestionAnswer;
 import com.toso.freetesting.domain.Test;
 import com.toso.freetesting.domain.TestQuestion;
+import com.toso.freetesting.service.IPrepareTest;
 import com.toso.freetesting.technology.XMLParser;
 
 @Controller
+@Component
 public class TestController {
 	
 	@RequestMapping("/test")
@@ -53,7 +58,9 @@ public class TestController {
 		model.addAttribute("test",test1);
 		*/
 		Test test=new Test();
-		PrepareTest testPrepare = new PrepareTest();
+		
+		@Autowired 
+		IPrepareTest testPrepare;
 		test=testPrepare.prepare("SOA");
 		return "testrun";
 	}
