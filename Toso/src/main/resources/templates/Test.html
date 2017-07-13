@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body>
+<!-- Login Section -->
+    <img class="img-responsive" src="/images/banner.png" alt="banner"/>
+    <div class="container">
+      
+            <div class="panel panel-default">
+                <div class="bg-danger" th:if="${param.error}">
+                    Invalid username and secret.
+                </div>
+                <div class="bg-danger" th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <hr />
+                <div class="thumbnail">
+                <h2 th:text="${test.getName()}" />
+            	<div class="caption">
+					 <p> Quiz contains <b th:text="${test.getNumberOfQuestions()}"/> Multiple Choice questions </p>
+					 <p>If the question contains multiple correct answers, you get the point for each correct answer. </p>
+					 <p>Each wrong answer will reduce the points for the given question </p>
+					 <p>Total time for the Quiz is <b th:text="${test.getTestDuration()}"/> Minutes </p>
+					 <p>OR You can finish the exam at any time</p>
+					 <p>Read the question carefully before answering</p>
+					 <p>You can change your answers before submitting</p>
+					 <p><b>Good luck for the test.</b></p>
+            			<div class="form-group ">
+                    <a  class="btn btn-info btn-lg btn-block login-button" th:href="@{/test/run}">Run Test</a>
+                </div>
+                </div>
+                </div>
+                <hr />
+                
+             </div>
+        </div>
+   
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>
